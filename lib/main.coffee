@@ -47,14 +47,14 @@ export default {
         }
         output = await helpers.exec(@executablePath, params, execOptions)
 
-        if (textEditor.getText() !== fileText) {
+        if (textEditor.getText() != fileText) {
           # Editor contents have changed, don't update the messages
           return null
         }
 
         messages = []
         match = regex.exec(output)
-        while (match !== null) {
+        while (match != null) {
           line = Number.parseInt(match[1], 10) -1
           col = Number.parseInt(match[2], 10) -1
           messages.push({
