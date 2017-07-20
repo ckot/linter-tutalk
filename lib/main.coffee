@@ -38,7 +38,7 @@ export default {
       lint: async(textEditor) =>
         filePath = textEditor.getPath()
         fileText = textEditor.getText()
-
+        params = []
         execOptions = {
           stream: 'stderr',
           stdin: fileText,
