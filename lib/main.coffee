@@ -42,7 +42,7 @@ export default {
         execOptions = {
           stream: 'stderr',
           stdin: fileText,
-          cwd: projectPath !== null ? projectPath : dirname(filePath),
+          cwd: projectPath != null ? projectPath : dirname(filePath),
           allowEmptyStderr: true
         }
         output = await helpers.exec(@executablePath, params, execOptions)
