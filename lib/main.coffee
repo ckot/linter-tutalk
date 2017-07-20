@@ -24,7 +24,6 @@ export default {
         if value
           @ignoreErrorsAndWarnings = value.replace /\s+/g, ''
 
-
   destroy: ->
     do @subscriptions?.dispose
 
@@ -46,12 +45,10 @@ export default {
           allowEmptyStderr: true
         }
         output = await helpers.exec(@executablePath, params, execOptions)
-
         if (textEditor.getText() != fileText) {
           # Editor contents have changed, don't update the messages
           return null
         }
-
         messages = []
         match = regex.exec(output)
         while (match != null) {
