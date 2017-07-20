@@ -1,6 +1,6 @@
 {
   "name": "linter-tutalk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "engines": {
     "atom": "*"
@@ -26,9 +26,8 @@
       "type": "string",
       "default": "",
       "description": "comma-separated list of error and warning codes",
-      "order": 4
+      "order": 2
     }
-
   },
   "license": "Proprietary",
   "readmeFilename": "README.md",
@@ -46,5 +45,5 @@
       }
     }
   },
-  "main": "./lib/init"
+  "main": "./lib/main"
 }
