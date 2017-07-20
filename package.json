@@ -15,6 +15,21 @@
   "bugs": {
     "url": "https://github.com/ckot/linter-tutalk#issues"
   },
+  "configSchema": {
+    "executablePath": {
+      "type": "string",
+      "default": "tutalk-lint",
+      "description": "Full path to the tutalk-lint executable",
+      "order": 1
+    },
+    "ignoreErrorsAndWarnings": {
+      "type": "string",
+      "default": "",
+      "description": "comma-separated list of error and warning codes",
+      "order": 4
+    }
+
+  },
   "license": "Proprietary",
   "readmeFilename": "README.md",
   "dependencies": {
