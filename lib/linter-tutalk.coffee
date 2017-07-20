@@ -6,13 +6,24 @@ helpers = require './helpers'
 { CompositeDisposable } = require 'atom'
 { exec, findCached, tempFile } = require './constants.coffee'
 
+  activate: ->
+    require('atom-package-deps').install 'linter-tutalk'
 
+  provideLinter: ->
+    LinterTuTalk = require './linter-tutalk.coffee'
+    provider = new LinterTuTalk()
+    {
+      grammarScopes: [
+        'source.tutalk'
+      ]
+      name: 'TuTalkLinter'
+      scope: 'file'
+      lint: provider.linter-tutalk
+    }
 class LinterTuTalk
   constructor: ->
     @subscriptions = new CompositeDisposable
     @subscriptions.add \
-      atom.config.observe 'linter-tutalk.interpreter', (value) =>
-        @interpreterPath = @interpreter = value
       atom.config.observe 'linter-tutalk.executablePath', (value) =>
         @executablePath = value
       atom.config.observe 'linter-tutalk.configFileLoad', (value) =>
@@ -42,12 +53,12 @@ class LinterTuTalk
         if @skipFiles then args.push.apply args, ['--skip', @skipFiles]
 
   initTuTalkLinter: =>
-    [@interpreter, @virtualEnv] = helpers.getExecutable @interpreter
-    if not @interpreter
-      atom.notifications.addError 'Python executable not found', {
-        detail: "[linter-tutalk] Python executable not found in `#{@interpreterPath}`
-        \nPlease set the correct path to `python`"
-      }
+    # [@interpreter, @virtualEnv] = helpers.getExecutable @interpreter
+    # if not @interpreter
+    #   atom.notifications.addError 'Python executable not found', {
+    #     detail: "[linter-tutalk] Python executable not found in `#{@interpreterPath}`
+    #     \nPlease set the correct path to `python`"
+    #   }
     [@executablePath, @virtualEnv] = helpers.getExecutable @executablePath
     if not @executablePath
       atom.notifications.addError 'tutalk-lint executable not found', {
