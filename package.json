@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "",
   "engines": {
-    "atom": "*"
+    "atom": ">=1.4.0 <2.0.0"
   },
   "repository": {
     "type": "git",
@@ -45,5 +45,5 @@
       }
     }
   },
-  "main": "./lib/main"
+  "main": "./lib/main.js"
 }
